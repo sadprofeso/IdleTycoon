@@ -14,12 +14,21 @@ public class Building : MonoBehaviour
 
     private TextMeshProUGUI buyButtonText;
 
-    public BigInteger Cost;
+    [SerializeField] private string costRepresentation;
+    
+    public BigInteger Cost
+    {
+        get { return BigInteger.Parse(costRepresentation);  }
+        set { costRepresentation = value.ToString();  }
+    }
+
+    private bool isUnlocked = false;
+
 
 
     void Start()
     {
-        
+        buyButtonText = buyButton.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     void Update()
